@@ -10,7 +10,7 @@ Email: alireza.goudarzi@riken.jp <br>
 
 ## Example: 
 
-<code>
+'''
       function eval(params)
              allgrads[i-1]:zero();
              out = net:forward(input);
@@ -21,4 +21,4 @@ Email: alireza.goudarzi@riken.jp <br>
       end
 
     rmsprop(eval,params,{learningRate=gLR, alpha  = 0.95, epsilon=0.001, center=true})
-</code>
+'''
