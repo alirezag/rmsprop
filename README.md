@@ -13,12 +13,12 @@ Email: alireza.goudarzi@riken.jp <br>
 '''
 
       function eval(params)
-             allgrads[i-1]:zero();
+             allgrads[:zero();
              out = net:forward(input);
-             loss_g2 = MSECF:forward(out,target);
-             dloss_g2 = MSECF:backward(out,target);
-             allGnets[i-1]:backward(input,dloss_g2)
+             loss = criterion:forward(out,target);
+             dloss = criterion:backward(out,target);
+             net:backward(input,dloss_g2)
           return loss_g2,allgrads
       end
-    rmsprop(eval,params,{learningRate=gLR, alpha  = 0.95, epsilon=0.001, center=true})
+    rmsprop(eval,params,{learningRate=0.9, alpha  = 0.95, epsilon=0.001, center=true})
 '''
