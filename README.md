@@ -1,5 +1,5 @@
-# rmsprop
-Torch implementation of RMSPROP. The optim.rmsprop doesn't offer centered version of the rmsprop optimization. 
+# RMSPROP for Torch
+Torch implementation of RMSPROP. The optim.rmsprop doesn't offer centered version of the RMSPROP optimization. 
 I'm extending the original optim.rmsprop here as a function. The center config by default is true. You can switch it to false.
 
 <br>
