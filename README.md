@@ -19,6 +19,5 @@ Email: alireza.goudarzi@riken.jp <br>
              allGnets[i-1]:backward(input,dloss_g2)
           return loss_g2,allgrads
       end
-
     rmsprop(eval,params,{learningRate=gLR, alpha  = 0.95, epsilon=0.001, center=true})
 '''
