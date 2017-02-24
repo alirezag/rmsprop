@@ -13,7 +13,7 @@ Email: alireza.goudarzi@riken.jp <br>
 '''
 
       function eval(params)
-             allgrads[:zero();
+             allgrads:zero();
              out = net:forward(input);
              loss = criterion:forward(out,target);
              dloss = criterion:backward(out,target);
