@@ -22,3 +22,7 @@ Email: alireza.goudarzi@riken.jp <br>
       end
     rmsprop(eval,params,{learningRate=0.9, alpha  = 0.95, epsilon=0.001, center=true})
 '''
+<br> 
+A sample is given here: 
+
+<img src='test/sample.png'>
