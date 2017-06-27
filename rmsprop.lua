@@ -23,8 +23,9 @@ RETURN:
 - `f(x)`  : the function, evaluated before the update
 ]]
 
-function rmsprop(opfunc, x, config, state)
+function optim.rmsprop(opfunc, x, config, state)
    -- (0) get/update state
+ 
    local config = config or {}
    local state = state or config
    local lr = config.learningRate or 1e-2
@@ -32,7 +33,7 @@ function rmsprop(opfunc, x, config, state)
    local epsilon = config.epsilon or 1e-8
    local wd = config.weightDecay or 0
    local mfill = config.initialMean or 0
-   local center = config.center or true
+   local center = config.center 
    -- (1) evaluate f(x) and df/dx
    local fx, dfdx = opfunc(x)
 
@@ -44,7 +45,10 @@ function rmsprop(opfunc, x, config, state)
    -- (3) initialize mean square values and square gradient storage
    if not state.m then
      state.m = torch.Tensor():typeAs(x):resizeAs(dfdx):fill(mfill)
-      state.m2 = torch.Tensor():typeAs(x):resizeAs(dfdx):fill(mfill)
+     if center then 
+       print(center)
+        state.m2 = torch.Tensor():typeAs(x):resizeAs(dfdx):fill(mfill)
+     end 
       state.tmp = torch.Tensor():typeAs(x):resizeAs(dfdx)
    end
 
@@ -59,7 +63,8 @@ function rmsprop(opfunc, x, config, state)
    -- (5) perform update
    if center then
     -- rmsprop with variance of gradients (centered veresion)
-    state.tmp:sqrt(state.m-torch.pow(state.m2,2)+epsilon)
+    state.tmp:sqrt(state.m-torch.pow(state.m2,2)):add(epsilon)
+    
    else
     -- rmsprop with magnitude of gradients
     state.tmp:sqrt(state.m):add(epsilon)
